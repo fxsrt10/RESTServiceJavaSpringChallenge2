@@ -21,8 +21,7 @@ public class PurchaseController {
     @RequestMapping(method = RequestMethod.GET, value = "{id}")
     public Purchase getById(@PathVariable String id) {
         Double amount = db.getMortgageAmount(id);
-        Purchase p = new Purchase();
-        p.setInterestRate(.25);
+        Purchase p = new Purchase();        
         p.setId(Long.valueOf(id));
         p.setOrigMortgageAmount(amount);
     	return p;
