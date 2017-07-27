@@ -9,21 +9,20 @@ import java.util.List;
  * @author bpeters
  */
 public class MySQLConnection {
-	private static Connection conn;
-	private static Statement stmt;
+	private Connection conn;
+	private Statement stmt;
 
 	public MySQLConnection() {
 		try {
 			System.out.println("----connecting to mysql----");
 			Class.forName("com.mysql.jdbc.Driver");
-			if(conn != null){
+			
 			conn = DriverManager.getConnection("jdbc:mysql://129.150.74.214:3306/mydatabase", "root", "Oracle1!");
 			
 			// here sonoo is database name, root is username and password
 			System.out.println("connection established");
 			
-			stmt = conn.createStatement();
-			}
+			stmt = conn.createStatement();			
 			
 		} catch (Exception e) {
 
@@ -40,8 +39,11 @@ public class MySQLConnection {
 				mortgageAmount = Double.valueOf(rs.getString(1).replace(",", ""));
 			System.out.println(mortgageAmount);
 
+			conn.close();
 		} catch (Exception e) {
 			System.out.println(e);
+		}finally{
+			
 		}
 		return mortgageAmount;
 
@@ -56,9 +58,10 @@ public class MySQLConnection {
 			while (rs.next())
 				average = Double.valueOf(rs.getFloat(1));
 			System.out.println(average);
-
+			conn.close();
 		} catch (Exception e) {
 			System.out.println(e);
+			
 		}
 		return average;
 	}
@@ -74,6 +77,7 @@ public class MySQLConnection {
 				p.setPropertyCity(rs.getString(1));
 				purchases.add(p);
 			}
+			conn.close();
 
 		} catch (Exception e) {
 			System.out.println(e);
@@ -112,6 +116,7 @@ public class MySQLConnection {
 				
 				purchases.add(p);
 			}
+			conn.close();
 			
 				
 			
@@ -153,6 +158,7 @@ public class MySQLConnection {
 				
 				purchases.add(p);
 			}
+			conn.close();
 			
 				
 			
@@ -194,6 +200,7 @@ public class MySQLConnection {
 				
 				purchases.add(p);
 			}
+			conn.close();
 			
 				
 			
