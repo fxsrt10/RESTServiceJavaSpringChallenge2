@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +19,17 @@ public class PurchaseController {
     private final AtomicLong counter = new AtomicLong();
     public MySQLConnection db = new MySQLConnection();
 
+    @RequestMapping(method = RequestMethod.GET)
+    @Async
+    public List<Purchase> getPurchases(){
+    	List<Purchase> purchases = new ArrayList<>();
+    	purchases = db.getPurchases();
+    	
+    	
+    	
+    	
+    	return purchases;    	
+    }
     @RequestMapping(method = RequestMethod.GET, value = "{id}")
     public Purchase getById(@PathVariable String id) {
         Double amount = db.getMortgageAmount(id);
