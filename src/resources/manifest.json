@@ -1,0 +1,8 @@
+{
+  "runtime": {
+    "majorVersion": "8"
+  },
+  "command": "java -Dserver.port=$PORT -jar gs-rest-service-0.1.0.war",
+  "startupTime": "300",
+  "notes": "SpringBoot demo application"
+}
