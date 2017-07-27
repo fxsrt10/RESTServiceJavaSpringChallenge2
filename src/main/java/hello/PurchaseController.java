@@ -49,4 +49,24 @@ public class PurchaseController {
     	
     	return purchases;    	
     }
+    @RequestMapping(method = RequestMethod.GET, value = "/averageByCity")
+    public List<Purchase> getAverageByCity(){
+    	List<Purchase> purchases = new ArrayList<>();
+    	purchases = db.getAverageMortgageAmountByCity();
+    	
+    	
+    	
+    	
+    	return purchases;    	
+    }
+    @RequestMapping(method = RequestMethod.GET, value = "/zip/{zip}")
+    public List<Purchase> getPurchasesByZip(@PathVariable String zip){
+    	List<Purchase> purchases = new ArrayList<>();
+    	purchases = db.getPurchasesByCity(zip);
+    	
+    	
+    	
+    	
+    	return purchases;    	
+    }
 }
