@@ -133,7 +133,7 @@ public class MySQLConnection {
 		try {
 
 			System.out.println("test");
-			ResultSet rs = stmt.executeQuery("SELECT * FROM purchase");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM purchase LIMIT 1000");
 			while (rs.next()){
 				System.out.println("---------");
 				System.out.println(rs.getInt(1));
@@ -316,7 +316,7 @@ public class MySQLConnection {
 		try {
 
 			System.out.println("test");
-			ResultSet rs = stmt.executeQuery("SELECT * FROM refinance");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM refinance LIMIT 1000");
 			while (rs.next()){
 				System.out.println("---------");
 				System.out.println(rs.getInt(1));
