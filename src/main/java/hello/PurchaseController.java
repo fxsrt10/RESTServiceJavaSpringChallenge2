@@ -17,11 +17,13 @@ public class PurchaseController {
 
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
-    public MySQLConnection db = new MySQLConnection();
+    
+    
 
     @RequestMapping(method = RequestMethod.GET)
     @Async
     public List<Purchase> getPurchases(){
+    	final MySQLConnection db = new MySQLConnection();
     	List<Purchase> purchases = new ArrayList<>();
     	purchases = db.getPurchases();
     	
@@ -32,6 +34,8 @@ public class PurchaseController {
     }
     @RequestMapping(method = RequestMethod.GET, value = "{id}")
     public Purchase getById(@PathVariable String id) {
+    	final MySQLConnection db = new MySQLConnection();
+    	
         Double amount = db.getMortgageAmount(id);
         Purchase p = new Purchase();        
         p.setId(Long.valueOf(id));
@@ -41,6 +45,7 @@ public class PurchaseController {
     
     @RequestMapping(method = RequestMethod.GET, value = "/city/{city}")
     public List<Purchase> getPurchasesByCity(@PathVariable String city){
+    	final MySQLConnection db = new MySQLConnection();
     	List<Purchase> purchases = new ArrayList<>();
     	purchases = db.getPurchasesByCity(city);
     	
@@ -51,6 +56,7 @@ public class PurchaseController {
     }
     @RequestMapping(method = RequestMethod.GET, value = "/averageByCity")
     public List<Purchase> getAverageByCity(){
+    	final MySQLConnection db = new MySQLConnection();
     	List<Purchase> purchases = new ArrayList<>();
     	purchases = db.getAverageMortgageAmountByCity();
     	
@@ -61,6 +67,7 @@ public class PurchaseController {
     }
     @RequestMapping(method = RequestMethod.GET, value = "/zip/{zip}")
     public List<Purchase> getPurchasesByZip(@PathVariable String zip){
+    	final MySQLConnection db = new MySQLConnection();
     	List<Purchase> purchases = new ArrayList<>();
     	purchases = db.getPurchasesByCity(zip);
     	
